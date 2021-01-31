@@ -71,19 +71,24 @@ def error(bot,update):
    # callback function for error handler
     logger.error("Update '%s' caused error '%s'", update, update.error) 
  
-# creating entry point for my program
-if __name__ == "__main__":
-    bot = Bot(TOKEN)  # meake bot object not require updater as not polling program
+bot = Bot(TOKEN)  # meake bot object not require updater as not polling program
+try:
     bot.set_webhook("https://7aefeedc416d.ngrok.io/"+TOKEN) # set webhook for telegram bot
-    dp = Dispatcher(bot,None) # new Dispatcher function is required
+except Exception as e:
+    print(e)
 
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", _help))
-    dp.add_handler(CommandHandler("news", news))
-    dp.add_handler(MessageHandler(Filters.text, reply_text))
-    dp.add_handler(MessageHandler(Filters.sticker, echo_sticker))
-    dp.add_error_handler(error)
-    
+dp = Dispatcher(bot,None) # new Dispatcher function is required
+
+dp.add_handler(CommandHandler("start", start))
+dp.add_handler(CommandHandler("help", _help))
+dp.add_handler(CommandHandler("news", news))
+dp.add_handler(MessageHandler(Filters.text, reply_text))
+dp.add_handler(MessageHandler(Filters.sticker, echo_sticker))
+dp.add_error_handler(error)
+
+
+# creating entry point for my program
+if __name__ == "__main__":  
     app.run(port = 8443)
 
 
