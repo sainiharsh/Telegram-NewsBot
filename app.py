@@ -22,7 +22,7 @@ app = Flask(__name__)
 def index():
     return "Hello!"
 
-# view to handle webhooks
+
 @app.route(f'/{TOKEN}', methods=['GET', 'POST'])
 def webhook():
    # webhook view which receives updates from telegram
@@ -73,7 +73,7 @@ def error(bot,update):
  
 bot = Bot(TOKEN)  # meake bot object not require updater as not polling program
 try:
-    bot.set_webhook("https://3d9961f0f6c7.ngrok.io/"+TOKEN) # set webhook for telegram bot
+    bot.set_webhook("https://boiling-hamlet-96620.herokuapp.com/"+TOKEN) # set webhook for telegram bot
 except Exception as e:
     print(e)
 
