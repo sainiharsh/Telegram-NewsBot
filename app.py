@@ -73,7 +73,7 @@ def error(bot,update):
  
 bot = Bot(TOKEN)  # meake bot object not require updater as not polling program
 try:
-    bot.set_webhook("https://obscure-savannah-69429.herokuapp.com/"+TOKEN) # set webhook for telegram bot
+    bot.set_webhook("https://rocky-woodland-15043.herokuapp.com/"+TOKEN) # set webhook for telegram bot
 except Exception as e:
     print(e)
 
