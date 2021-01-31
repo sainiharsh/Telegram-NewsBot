@@ -74,7 +74,7 @@ def error(bot,update):
 # creating entry point for my program
 if __name__ == "__main__":
     bot = Bot(TOKEN)  # meake bot object not require updater as not polling program
-    bot.set_webhook("https://7aefeedc416d.ngrok.io/"+TOKEN) # set webhook for telegram bot
+    bot.set_webhook("https://intense-ravine-85957.herokuapp.com/"+TOKEN) # set webhook for telegram bot
     dp = Dispatcher(bot,None) # new Dispatcher function is required
 
     dp.add_handler(CommandHandler("start", start))

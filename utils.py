@@ -37,7 +37,7 @@ def fetch_news(parameters):
 topics_keyboard = [
     ['Top Stories','World','Nation'],
     ['Business','Technology','Entertainment'],
-    ['Sports','Science','Health','City']
+    ['Sports','Science','Health']
 ]
 
 
