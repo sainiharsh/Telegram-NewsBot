@@ -13,29 +13,29 @@ TOKEN = "1432780373:AAFYXpaonmaRH_eIrdYnYtm58OcDWOkisD0"
 
 # By default any function pass inside command handler it will get to arguments
 def start(bot,update):
-   # """callback function for /start handler"""
+   # callback function for /start handler
     print(update)
     author = update.message.from_user.first_name # who has send me /sart command
     reply = "Hi! {}".format(author) # reply hi to author
     bot.send_message(chat_id=update.message.chat_id,text=reply) # send reply text to bot
 
 def _help(bot,update):
-   # """callback function for /help handler"""
+   # callback function for /help handler
     help_txt="Hey! This is a help text."
     bot.send_message(chat_id=update.message.chat_id,text=help_txt)
 
 def echo_text(bot,update):
-   # """callback function for text message handler"""
+   # callback function for text message handler
     reply = update.message.text
     bot.send_message(chat_id=update.message.chat_id,text=reply)
 
 def echo_sticker(bot,update):
-   # """callback function for sticker message handler"""
+   # callback function for sticker message handler
     bot.send_sticker(chat_id=update.message.chat_id,
     sticker=update.message.sticker.file_unique_id)
 
 def error(bot,update):
-   # """callback function for error handler"""
+   # callback function for error handler
     logger.error("Update '%s' caused error '%s'", update, update.error) 
 
 def main():
