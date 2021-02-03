@@ -70,21 +70,36 @@ def echo_sticker(bot,update):
 def error(bot,update):
    # callback function for error handler
     logger.error("Update '%s' caused error '%s'", update, update.error) 
- 
+
+
+bot = Bot(TOKEN)
+try:
+    bot.set_webhook("https://obscure-plains-26124.herokuapp.com//" + TOKEN)
+    time.sleep(5)
+except Exception as e:
+    print(e)
+
+dp = Dispatcher(bot, None)
+dp.add_handler(CommandHandler("start", start))
+dp.add_handler(CommandHandler("help", _help))
+dp.add_handler(CommandHandler("news", news))
+dp.add_handler(MessageHandler(Filters.text, reply_text))
+dp.add_handler(MessageHandler(Filters.sticker, echo_sticker))
+dp.add_error_handler(error) 
 
 
 # creating entry
 if __name__ == "__main__":  
-    bot = Bot(TOKEN)  # make bot object not require updater as not polling program
-    bot.set_webhook("https://obscure-plains-26124.herokuapp.com/"+TOKEN) # set webhook for telegram bot
+    # bot = Bot(TOKEN)  # make bot object not require updater as not polling program
+    # bot.set_webhook(""+TOKEN) # set webhook for telegram bot
     
-    dp = Dispatcher(bot,None) # new Dispatcher function is required
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", _help))
-    dp.add_handler(CommandHandler("news", news))
-    dp.add_handler(MessageHandler(Filters.text, reply_text))
-    dp.add_handler(MessageHandler(Filters.sticker, echo_sticker))
-    dp.add_error_handler(error)
+    # dp = Dispatcher(bot,None) # new Dispatcher function is required
+    # dp.add_handler(CommandHandler("start", start))
+    # dp.add_handler(CommandHandler("help", _help))
+    # dp.add_handler(CommandHandler("news", news))
+    # dp.add_handler(MessageHandler(Filters.text, reply_text))
+    # dp.add_handler(MessageHandler(Filters.sticker, echo_sticker))
+    # dp.add_error_handler(error)
     app.run(port=8443)
 
 
